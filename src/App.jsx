@@ -11,7 +11,7 @@ function App() {
 
   const getUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/person");
+      const res = await axios.get("https://backend-prova-6hi7.onrender.com/api/person");
       setList(res.data);
       console.log(res.data); 
     } catch (error) {
@@ -21,7 +21,7 @@ function App() {
 
   const registerUser = async () => {
     try { 
-      await axios.post("http://localhost:8080/api/person",{
+      await axios.post("https://backend-prova-6hi7.onrender.com/api/person",{
         name, lastname, salary
       });
     } catch (error) {
@@ -31,7 +31,7 @@ function App() {
 
   const deleteUser = async (id) => {
     try { 
-      await axios.delete(`http://localhost:8080/api/person/${id}`);
+      await axios.delete(`https://backend-prova-6hi7.onrender.com/api/person/${id}`);
       getUsers()
     } catch (error) {
       console.error("Erro ao inserir", error);
@@ -59,8 +59,8 @@ function App() {
         <td className="px-6 py-4">{user.name}</td>
         <td className="px-6 py-4">{user.lastname}</td>
         <td className="px-6 py-4">R${user.salary}</td>
-        <td class="px-6 py-4">
-          <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => {deleteUser(user._id)}}>Delete</a>
+        <td className="px-6 py-4">
+          <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => {deleteUser(user._id)}}>Delete</a>
         </td>
       </tr>
     ));
